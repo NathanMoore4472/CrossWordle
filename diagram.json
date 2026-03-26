@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "author": "CrossPoint Reader",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": 32,
+      "left": 0,
+      "attrs": {}
+    },
+
+    { "type": "wokwi-resistor", "id": "r_pu1", "top": 192, "left": 288, "rotate": 90, "attrs": { "value": "10000" } },
+    { "type": "wokwi-resistor", "id": "r_pu2", "top": 384, "left": 288, "rotate": 90, "attrs": { "value": "10000" } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_back",  "top": 160, "left": 384, "attrs": { "color": "green",  "label": "Back"    } },
+    { "type": "wokwi-resistor",   "id": "r_back",    "top": 210, "left": 384, "attrs": { "value": "62000" } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_conf",  "top": 256, "left": 384, "attrs": { "color": "green",  "label": "Confirm" } },
+    { "type": "wokwi-resistor",   "id": "r_conf",    "top": 306, "left": 384, "attrs": { "value": "20000" } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_left",  "top": 352, "left": 384, "attrs": { "color": "yellow", "label": "Left"    } },
+    { "type": "wokwi-resistor",   "id": "r_left",    "top": 402, "left": 384, "attrs": { "value": "5600"  } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_right", "top": 448, "left": 384, "attrs": { "color": "yellow", "label": "Right"   } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_up",    "top": 352, "left": 480, "attrs": { "color": "blue",   "label": "Up"      } },
+    { "type": "wokwi-resistor",   "id": "r_up",      "top": 402, "left": 480, "attrs": { "value": "12000" } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_down",  "top": 448, "left": 480, "attrs": { "color": "blue",   "label": "Down"    } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_power", "top": 544, "left": 384, "attrs": { "color": "red",    "label": "Power"   } }
+  ],
+  "connections": [
+    ["esp:3V3",    "r_pu1:1",       "red",    []],
+    ["r_pu1:2",    "esp:GPIO1",     "red",    []],
+
+    ["esp:3V3",    "r_pu2:1",       "red",    []],
+    ["r_pu2:2",    "esp:GPIO2",     "red",    []],
+
+    ["esp:GPIO1",  "btn_back:1.l",  "green",  []],
+    ["esp:GPIO1",  "btn_conf:1.l",  "green",  []],
+    ["esp:GPIO1",  "btn_left:1.l",  "green",  []],
+    ["esp:GPIO1",  "btn_right:1.l", "green",  []],
+
+    ["btn_back:2.l",  "r_back:1",  "black",  []],
+    ["r_back:2",      "esp:GND.1", "black",  []],
+
+    ["btn_conf:2.l",  "r_conf:1",  "black",  []],
+    ["r_conf:2",      "esp:GND.1", "black",  []],
+
+    ["btn_left:2.l",  "r_left:1",  "black",  []],
+    ["r_left:2",      "esp:GND.1", "black",  []],
+
+    ["btn_right:2.l", "esp:GND.1", "black",  []],
+
+    ["esp:GPIO2",  "btn_up:1.l",   "blue",   []],
+    ["esp:GPIO2",  "btn_down:1.l", "blue",   []],
+
+    ["btn_up:2.l",    "r_up:1",    "black",  []],
+    ["r_up:2",        "esp:GND.2", "black",  []],
+
+    ["btn_down:2.l",  "esp:GND.2", "black",  []],
+
+    ["esp:GPIO3",  "btn_power:1.l", "purple", []],
+    ["btn_power:2.l", "esp:GND.2", "black",  []]
+  ]
+}
